@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 30px;
+}
+.pagina{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    
+}
+.dashboard{
+    z-index: 1;
+    top:0;
+    bottom:0;
+    width: 200px;
+    background-color: rgb(51, 106, 108);
+    box-shadow: 0 0 10px 0 black;
+}
+.kanban{
+    display: flex;
+    justify-content: center;
+    min-height: 400px;
+    gap: 10px;
+    padding: 10px;
+    flex-grow: 1;
+}
+
+.coluna{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    background-color: cadetblue;
+    min-width: 200px;
+    border-radius: 5px;
+    height: max-content;
+    min-height: 300px;
+}
+
+.item{
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+.botao{
+    background-color: rgb(51, 106, 108);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+button{
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.dragging{
+    opacity: 0.5;
+}
