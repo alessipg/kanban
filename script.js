@@ -1,3 +1,18 @@
+function criarQuadro(titulo){
+    const $kanban = document.querySelector('.kanban');
+    $kanban.insertAdjacentHTML("beforeend", `
+    <div class="quadro">
+        <div class="titulo">
+            ${titulo}
+        </div>
+        <div class="coluna">
+            <div class="item" draggable="true">Item 01</div>
+            <div class="item" draggable="true">Item 02</div>
+        </div>
+    </div>
+    `);
+}
+
 const colunas = document.querySelectorAll(".coluna");
 
 document.addEventListener("dragstart", (e) =>{
@@ -31,3 +46,12 @@ function getNewPosition(coluna,posY){
     }
     return result;
 }
+
+const $botaoCriar = document.getElementById('quadro');
+
+$botaoCriar.addEventListener('click', () => {
+    let titulo = prompt("Digite o nome do quadro: ");
+    criarQuadro(titulo);
+});
+
+
