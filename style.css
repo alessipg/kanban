@@ -126,18 +126,20 @@ ul li a {
 ul li ul.dropdown li {
     display: block;
     gap: 5px;
+    border: 1px solid black !important;
+    border-radius: 5px;
 }
 
 ul li ul.dropdown {
     width: max-content;
-    background: rgb(51, 106, 108);
+    gap: 5px;
     position: absolute;
     z-index: 999;
     display: none;
     border-radius: 5px;
     
+    
 }
-
-ul li:hover ul.dropdown {
+ul li.show ul.dropdown {
     display: block;
 }
