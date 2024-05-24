@@ -1,4 +1,7 @@
+import Quadro from './Quadro.js';
+
 function criarQuadro(titulo){
+    const quadro = new Quadro(titulo);
     const $kanban = document.querySelector('.kanban');
     $kanban.insertAdjacentHTML("beforeend", `
     <div class="quadro">
