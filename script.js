@@ -1,6 +1,6 @@
 import Quadro from './Quadro.js';
 
-function criarQuadro(titulo){
+function criarQuadro(titulo) {
     const quadro = new Quadro(titulo);
     const $kanban = document.querySelector('.kanban');
     $kanban.insertAdjacentHTML("beforeend", `
@@ -18,34 +18,34 @@ function criarQuadro(titulo){
 
 const colunas = document.querySelectorAll(".coluna");
 
-document.addEventListener("dragstart", (e) =>{
+document.addEventListener("dragstart", (e) => {
     e.target.classList.add("dragging");
 })
 
-document.addEventListener("dragend", (e) =>{
+document.addEventListener("dragend", (e) => {
     e.target.classList.remove("dragging");
 })
 
-colunas.forEach((item) =>{
-    item.addEventListener("dragover",(e) =>{
+colunas.forEach((item) => {
+    item.addEventListener("dragover", (e) => {
         const dragging = document.querySelector(".dragging");
         const applyAfter = getNewPosition(item, e.clientY);
 
-        if(applyAfter){
-            applyAfter.insertAdjacentElement("afterend",dragging);
-        }else{
+        if (applyAfter) {
+            applyAfter.insertAdjacentElement("afterend", dragging);
+        } else {
             item.prepend(dragging);
         }
     });
 });
 
-function getNewPosition(coluna,posY){
+function getNewPosition(coluna, posY) {
     const cards = coluna.querySelectorAll(".item:not(.dragging)");
     let result;
-    for (let refer_card of cards){
+    for (let refer_card of cards) {
         const box = refer_card.getBoundingClientRect();
         const boxCenterY = box.y + box.height / 2;
-        if(posY >= boxCenterY) result = refer_card;
+        if (posY >= boxCenterY) result = refer_card;
     }
     return result;
 }

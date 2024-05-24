@@ -17,9 +17,32 @@
             </div>
         </div>
         <div class="kanban">
-            
+            <div class="quadro">
+                <div class="cabecalho">
+                    <div class="titulo">
+                        ${titulo}
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="opcoes">
+                                <a href="#">
+                                    ...
+                                </a>  
+                            </div> 
+                            <ul class="dropdown">
+                                <li><button>Editar</button></li>
+                                <li><button>Excluir</button></li>
+                            </ul>
+                        </li>           
+                    </ul>
+                </div>
+                <div class="coluna">
+                    <div class="item" draggable="true">Item 01</div>
+                    <div class="item" draggable="true">Item 02</div>
+                </div>
+            </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

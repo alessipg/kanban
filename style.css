@@ -1,25 +1,28 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
 }
-.pagina{
+
+.pagina {
     display: flex;
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
 }
+
 .dashboard {
     z-index: 1;
-    position: relative; 
+    position: relative;
     width: 200px;
     background-color: rgb(51, 106, 108);
     box-shadow: 0 0 10px 0 black;
     min-width: 200px;
-    flex-shrink: 0; 
+    flex-shrink: 0;
 }
+
 .kanban {
     display: flex;
     justify-content: flex-start;
@@ -28,15 +31,17 @@
     gap: 10px;
     padding: 10px;
     flex-grow: 1;
-    overflow-x: auto; 
+    overflow-x: auto;
 }
 
-.titulo{
+.titulo {
     text-align: center;
     padding-top: 10px;
 
+
 }
-.quadro{
+
+.quadro {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -46,7 +51,8 @@
     height: max-content;
     min-height: 300px;
 }
-.coluna{
+
+.coluna {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -58,19 +64,21 @@
     min-height: 300px;
 }
 
-.item{
+.item {
     background-color: white;
     padding: 10px;
     border-radius: 5px;
 }
-.botao{
-    
+
+.botao {
+
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
 
 }
-button{
+
+button {
     display: flex;
     color: black;
     border: none;
@@ -80,6 +88,56 @@ button{
     box-sizing: border-box;
     width: 100%;
 }
-.dragging{
+
+.dragging {
     opacity: 0.5;
+}
+
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.opcoes {
+    align-items: end;
+    font-size: 30px;
+}
+
+ul {
+    list-style: none;
+
+}
+
+ul li {
+    display: inline-block;
+    position: relative;
+}
+
+ul li a {
+    display: block;
+    padding: 20px 25px;
+    text-decoration: none;
+    text-align: center;
+}
+
+ul li ul.dropdown li {
+    display: block;
+    gap: 5px;
+}
+
+ul li ul.dropdown {
+    width: max-content;
+    background: rgb(51, 106, 108);
+    position: absolute;
+    z-index: 999;
+    display: none;
+    border-radius: 5px;
+    
+}
+
+ul li:hover ul.dropdown {
+    display: block;
 }
