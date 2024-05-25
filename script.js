@@ -9,23 +9,63 @@ function criarQuadro(titulo) {
             <div class="titulo">
                 ${titulo}
             </div>
-            <ul>
+            <ul class="lista">
                 <li>
                     <div class="opcoes">
                         <a href="#">
                             ...
-                        </a>  
-                    </div> 
+                        </a>
+                    </div>
                     <ul class="dropdown">
-                        <li><button>Editar</button></li>
-                        <li><button>Excluir</button></li>
+                        <div class="menuDrop">
+                            <li><button>Editar</button></li>
+                            <li><button>Excluir</button></li>
+                        </div>
                     </ul>
-                </li>           
+                </li>
             </ul>
         </div>
         <div class="coluna">
-            <div class="item" draggable="true">Item 01</div>
-            <div class="item" draggable="true">Item 02</div>
+            <div class="item" draggable="true">
+                <div class="conteudo">
+                    Item 01
+                </div>
+                <ul class="opItens">
+                    <li>
+                        <div class="opcoes">
+                            <a href="#">
+                                ...
+                            </a>
+                        </div>
+                        <ul class="dropdown">
+                            <div class="menuDrop">
+                                <li><button>Editar</button></li>
+                                <li><button>Excluir</button></li>
+                            </div>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="item" draggable="true">
+                <div class="conteudo">
+                    Item 02
+                </div>
+                <ul class="opItens">
+                    <li>
+                        <div class="opcoes">
+                            <a href="#">
+                                ...
+                            </a>
+                        </div>
+                        <ul class="dropdown">
+                            <div class="menuDrop">
+                                <li><button>Editar</button></li>
+                                <li><button>Excluir</button></li>
+                            </div>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     `;
@@ -44,12 +84,23 @@ function criarQuadro(titulo) {
         }
     });
 
-    // Adicionar event listener para o menu de opções
-    const menuOpcoes = $kanban.lastElementChild.querySelector('.opcoes');
-    menuOpcoes.addEventListener('click', (e) => {
-        e.preventDefault();
-        const parentLi = menuOpcoes.closest('li');
-        parentLi.classList.toggle('show');
+    // Adicionar event listener para o menu de opções nos novos quadros
+    const menuOpcoes = $kanban.lastElementChild.querySelectorAll('.opcoes a');
+    menuOpcoes.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeAllDropdowns();
+            const parentLi = toggle.closest('li');
+            parentLi.classList.toggle('show');
+        });
+    });
+}
+
+function closeAllDropdowns() {
+    const openedMenus = document.querySelectorAll('.quadro .opcoes');
+    openedMenus.forEach(menu => {
+        const parentLi = menu.closest('li');
+        parentLi.classList.remove('show');
     });
 }
 
@@ -100,10 +151,11 @@ $botaoCriar.addEventListener('click', () => {
 
 // Inicializar event listeners para o menu de opções existente
 document.addEventListener('DOMContentLoaded', () => {
-    const menuOpcoes = document.querySelectorAll('.opcoes');
+    const menuOpcoes = document.querySelectorAll('.opcoes a');
     menuOpcoes.forEach(toggle => {
         toggle.addEventListener('click', (e) => {
             e.preventDefault();
+            closeAllDropdowns();
             const parentLi = toggle.closest('li');
             parentLi.classList.toggle('show');
         });
@@ -111,10 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.opcoes')) {
-            menuOpcoes.forEach(toggle => {
-                const parentLi = toggle.closest('li');
-                parentLi.classList.remove('show');
-            });
+            closeAllDropdowns();
         }
     });
 });
@@ -122,10 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // Adicionar event listener para fechar o menu de opções ao clicar fora, incluindo os novos menus
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.opcoes')) {
-        const openedMenus = document.querySelectorAll('.quadro .opcoes');
-        openedMenus.forEach(menu => {
-            const parentLi = menu.closest('li');
-            parentLi.classList.remove('show');
-        });
+        closeAllDropdowns();
     }
 });

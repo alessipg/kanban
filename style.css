@@ -68,8 +68,53 @@
     background-color: white;
     padding: 10px;
     border-radius: 5px;
+    display: flex;
 }
 
+ul.opItens {
+    list-style: none;
+
+}
+
+ul.opItens li {
+    display: inline-block;
+    position: relative;
+}
+
+ul.opItens li a {
+    display: block;
+    padding-left: 100px;
+    text-decoration: none;
+    text-align: center;
+    
+}
+ul.opItens li a:active {
+    color: rgb(51, 106, 108);
+}
+
+ul.opItens li ul.dropdown {
+    width: max-content;
+    gap: 5px;
+    position: absolute;
+    z-index: 999;
+    display: none;
+    border-radius: 5px;
+}
+ul.opItens li ul.dropdown li {
+    width: max-content;
+}
+
+ul.opItens li.show ul.dropdown {
+    display: block;
+}
+ul.opItens li.show ul.dropdown li button{
+    width: 100px;
+    background-color: gray;
+    color: white;
+    border: none;
+    margin-top: 5px;
+    cursor: pointer;
+}
 .botao {
 
     color: white;
@@ -78,7 +123,7 @@
 
 }
 
-button {
+.botaoDash {
     display: flex;
     color: black;
     border: none;
@@ -106,40 +151,52 @@ button {
     font-size: 30px;
 }
 
-ul {
+ul.lista {
     list-style: none;
 
 }
 
-ul li {
+ul.lista li {
     display: inline-block;
     position: relative;
 }
 
-ul li a {
+ul.lista li a {
     display: block;
-    padding: 20px 25px;
+    padding-right: 10px;
     text-decoration: none;
     text-align: center;
 }
-
-ul li ul.dropdown li {
-    display: block;
-    gap: 5px;
-    border: 1px solid black !important;
-    border-radius: 5px;
+ul.lista li a:active {
+    color: white;
 }
 
-ul li ul.dropdown {
+ul.lista li ul.dropdown {
     width: max-content;
     gap: 5px;
     position: absolute;
     z-index: 999;
     display: none;
     border-radius: 5px;
-    
-    
 }
-ul li.show ul.dropdown {
+ul.lista li ul.dropdown li {
+    width: max-content;
+}
+
+ul.lista li.show ul.dropdown {
     display: block;
+}
+ul.lista li.show ul.dropdown li button{
+    width: 100px;
+    background-color: gray;
+    color: white;
+    border: none;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.menuDrop{
+    background-color: grey;
+    width: 100px;
+    height: 70px;
+    border-radius: 5px; 
 }

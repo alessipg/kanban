@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanban</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="pagina">
         <div class="dashboard">
             <div class="botao" id="quadro">
-                <button>Novo quadro</button>
+                <button class="botaoDash">Novo quadro</button>
             </div>
             <div class="botao">
-                <button>Nova tarefa</button>
+                <button class="botaoDash">Nova tarefa</button>
             </div>
         </div>
         <div class="kanban">
@@ -22,27 +24,68 @@
                     <div class="titulo">
                         ${titulo}
                     </div>
-                    <ul>
+                    <ul class="lista">
                         <li>
                             <div class="opcoes">
                                 <a href="#">
                                     ...
-                                </a>  
-                            </div> 
+                                </a>
+                            </div>
                             <ul class="dropdown">
-                                <li><button>Editar</button></li>
-                                <li><button>Excluir</button></li>
+                                <div class="menuDrop">
+                                    <li><button>Editar</button></li>
+                                    <li><button>Excluir</button></li>
+                                </div>
                             </ul>
-                        </li>           
+                        </li>
                     </ul>
                 </div>
                 <div class="coluna">
-                    <div class="item" draggable="true">Item 01</div>
-                    <div class="item" draggable="true">Item 02</div>
+                    <div class="item" draggable="true">
+                        <div class="conteudo">
+                            Item 01
+                        </div>
+                        <ul class="opItens">
+                            <li>
+                                <div class="opcoes">
+                                    <a href="#">
+                                        ...
+                                    </a>
+                                </div>
+                                <ul class="dropdown">
+                                    <div class="menuDrop">
+                                        <li><button>Editar</button></li>
+                                        <li><button>Excluir</button></li>
+                                    </div>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="item" draggable="true">
+                        <div class="conteudo">
+                            Item 02
+                        </div>
+                        <ul class="opItens">
+                            <li>
+                                <div class="opcoes">
+                                    <a href="#">
+                                        ...
+                                    </a>
+                                </div>
+                                <ul class="dropdown">
+                                    <div class="menuDrop">
+                                        <li><button>Editar</button></li>
+                                        <li><button>Excluir</button></li>
+                                    </div>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <script type="module" src="script.js"></script>
 </body>
+
 </html>
