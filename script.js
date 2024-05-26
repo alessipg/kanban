@@ -74,13 +74,15 @@ function criarQuadro(titulo) {
     // Adicionar event listeners de drag and drop à nova coluna
     const novaColuna = $kanban.lastElementChild.querySelector(".coluna");
     novaColuna.addEventListener("dragover", (e) => {
+        e.preventDefault();
         const dragging = document.querySelector(".dragging");
-        const applyAfter = getNewPosition(novaColuna, e.clientY);
-
-        if (applyAfter) {
-            applyAfter.insertAdjacentElement("afterend", dragging);
-        } else {
-            novaColuna.prepend(dragging);
+        if (dragging) {
+            const applyAfter = getNewPosition(novaColuna, e.clientY);
+            if (applyAfter) {
+                applyAfter.insertAdjacentElement("afterend", dragging);
+            } else {
+                novaColuna.prepend(dragging);
+            }
         }
     });
 
@@ -106,7 +108,7 @@ function closeAllDropdowns() {
 
 function getNewPosition(coluna, posY) {
     const cards = coluna.querySelectorAll(".item:not(.dragging)");
-    let result;
+    let result = null;
     for (let refer_card of cards) {
         const box = refer_card.getBoundingClientRect();
         const boxCenterY = box.y + box.height / 2;
@@ -116,7 +118,8 @@ function getNewPosition(coluna, posY) {
 }
 
 document.addEventListener("dragstart", (e) => {
-    if (e.target.classList.contains("item")) {
+    console.log(e.currentTarget);
+    if (e.currentTarget.classList.contains("item")) {
         e.target.classList.add("dragging");
     }
 });
@@ -130,13 +133,15 @@ document.addEventListener("dragend", (e) => {
 const colunas = document.querySelectorAll(".coluna");
 colunas.forEach((coluna) => {
     coluna.addEventListener("dragover", (e) => {
+        e.preventDefault();
         const dragging = document.querySelector(".dragging");
-        const applyAfter = getNewPosition(coluna, e.clientY);
-
-        if (applyAfter) {
-            applyAfter.insertAdjacentElement("afterend", dragging);
-        } else {
-            coluna.prepend(dragging);
+        if (dragging) {
+            const applyAfter = getNewPosition(coluna, e.clientY);
+            if (applyAfter) {
+                applyAfter.insertAdjacentElement("afterend", dragging);
+            } else {
+                coluna.prepend(dragging);
+            }
         }
     });
 });
