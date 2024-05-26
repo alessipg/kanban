@@ -118,8 +118,7 @@ function getNewPosition(coluna, posY) {
 }
 
 document.addEventListener("dragstart", (e) => {
-    console.log(e.currentTarget);
-    if (e.currentTarget.classList.contains("item")) {
+    if (e.target.classList.contains("item")) {
         e.target.classList.add("dragging");
     }
 });
@@ -128,6 +127,9 @@ document.addEventListener("dragend", (e) => {
     if (e.target.classList.contains("item")) {
         e.target.classList.remove("dragging");
     }
+});
+document.addEventListener("mousedown", () => {
+        closeAllDropdowns(); 
 });
 
 const colunas = document.querySelectorAll(".coluna");

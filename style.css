@@ -69,11 +69,11 @@
     padding: 10px;
     border-radius: 5px;
     display: flex;
+    justify-content: space-between;
 }
 
 ul.opItens {
     list-style: none;
-
 }
 
 ul.opItens li {
@@ -83,10 +83,8 @@ ul.opItens li {
 
 ul.opItens li a {
     display: block;
-    padding-left: 100px;
-    text-decoration: none;
-    text-align: center;
     
+    text-decoration: none;
 }
 ul.opItens li a:active {
     color: rgb(51, 106, 108);
