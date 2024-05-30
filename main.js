@@ -1,7 +1,7 @@
-import Quadro from './scripts/Quadro.js';
+import Quadro from './scripts/Column.js';
 
 export function closeAllDropdowns() {
-    const openedMenus = document.querySelectorAll('.quadro .opcoes');
+    const openedMenus = document.querySelectorAll('.coluna .opcoes');
     openedMenus.forEach(menu => {
         const parentLi = menu.closest('li');
         parentLi.classList.remove('show');
@@ -21,7 +21,7 @@ export function getNewPosition(coluna, posY) {
 //inicializa listeners de drag and drop
 function initializeDragAndDrop() {
 
-    const $colunas = document.querySelectorAll(".coluna");
+    const $colunas = document.querySelectorAll(".lista");
 
     //drag
     document.addEventListener("dragstart", (e) => {
@@ -36,7 +36,7 @@ function initializeDragAndDrop() {
         }
     });
     //define a posição em que o card deve ser colocado a depender da posição
-    //-----------REMOVER APOS BACKEND------------
+    /*-----------REMOVER APOS BACKEND------------
     $colunas.forEach((coluna) => {
         coluna.addEventListener("dragover", (e) => {
             e.preventDefault();
@@ -50,7 +50,7 @@ function initializeDragAndDrop() {
                 }
             }
         });
-    });
+    });*/
 
 }
 //inicializa listeners para o funcionamento dos menus Dropdown
@@ -63,7 +63,7 @@ function initializeDropdowns() {
     });
 
     // Inicializar event listeners para o menu de opções existente
-    //-----------REMOVER APOS BACKEND------------
+    /*-----------REMOVER APOS BACKEND------------
     $menuOpcoes.forEach(toggle => {
         toggle.addEventListener('click', (e) => {
             e.preventDefault();
@@ -71,7 +71,7 @@ function initializeDropdowns() {
             const parentLi = toggle.closest('li');
             parentLi.classList.toggle('show');
         });
-    });
+    });*/
     // Adicionar event listener para fechar o menu de opções ao clicar fora
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.opcoes')) {
@@ -82,21 +82,22 @@ function initializeDropdowns() {
 
 //inicializa o dashboard
 function initializeDashboard() {
-    const $botaoCriar = document.getElementById('quadro');
+    const $botaoCriar = document.getElementById('coluna');
 
     $botaoCriar.addEventListener('click', () => {
-        let titulo = prompt("Digite o nome do quadro: ");
+        let titulo = prompt("Digite o nome da coluna: ");
         if (titulo) {
-            new Quadro().criarQuadro(titulo);
+            new Quadro().createColumn(titulo);
         }
     });
 }
 
 //inicializa todos os listeners necessários
 function initialize() {
+    Quadro.carregarColunas();
+    initializeDashboard();
     initializeDropdowns();
     initializeDragAndDrop();
-    initializeDashboard();
 };
 
 initialize();
