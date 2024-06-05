@@ -1,4 +1,6 @@
-import Quadro from './scripts/Column.js';
+import Column from './entities/Column.js';
+import Card from './entities/Card.js';
+
 
 export function closeAllDropdowns() {
     const openedMenus = document.querySelectorAll('.coluna .opcoes');
@@ -82,19 +84,28 @@ function initializeDropdowns() {
 
 //inicializa o dashboard
 function initializeDashboard() {
-    const $botaoCriar = document.getElementById('coluna');
+    
+    const $botaoCriarColuna = document.getElementById('coluna');
+    const $botaoCriarCard = document.getElementById('coluna');
 
-    $botaoCriar.addEventListener('click', () => {
+    $botaoCriarColuna.addEventListener('click', () => {
         let titulo = prompt("Digite o nome da coluna: ");
         if (titulo) {
-            new Quadro().createColumn(titulo);
+            new Column().createColumn(titulo);
+        }
+    });
+
+    $botaoCriarCard.addEventListener('click', () => {
+        let content = prompt("Digite o conteúdo do card: ");
+        if (content) {
+            new Card().createCard(content);
         }
     });
 }
 
 //inicializa todos os listeners necessários
 function initialize() {
-    Quadro.carregarColunas();
+    Column.carregarColunas();
     initializeDashboard();
     initializeDropdowns();
     initializeDragAndDrop();

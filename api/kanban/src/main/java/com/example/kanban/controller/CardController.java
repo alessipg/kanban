@@ -22,8 +22,7 @@ public class CardController {
 
     @GetMapping
     public List<CardResponseDTO> getAll(){
-        List<CardResponseDTO> cards = cardRepository.findAll().stream().map(CardResponseDTO::new).toList();
-        return cards;
+        return cardRepository.findAll().stream().map(CardResponseDTO::new).toList();
     }
     @PostMapping
     public void SaveCard(@RequestBody CardRequestDTO data){

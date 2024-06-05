@@ -1,14 +1,22 @@
 import { closeAllDropdowns } from '../main.js';
 import { getNewPosition } from '../main.js';
+import Card from './Card.js';
 
-export default class Quadro {
-    createColumn(titulo) {
+export default class Column {
+    
+    constructor(json) {
+        Object.keys(json).forEach(key => {
+            this[key] = json[key];
+        });
+    }
+ 
+    createColumn() {
         const $kanban = document.querySelector('.kanban');
         const quadroHTML = `
         <div class="coluna">
             <div class="cabecalho">
                 <div class="titulo">
-                    ${titulo}
+                    ${this.title}
                 </div>
                 <ul class="opHeader">
                     <li>
@@ -61,11 +69,14 @@ export default class Quadro {
     }
     // Busca todas as colunas da API
     static carregarColunas(){
-        fetch("http://localhost:8080/coluna")
+        fetch("http://localhost:8080/column")
         .then(response => response.json())
         .then(data =>{
             data.forEach(coluna => {
-                new Quadro().createColumn(coluna.title);
+                let colun = new Column(coluna)
+                colun.createColumn();
+                console.log(colun);
+                // new Card().carregarCards();
             });
         })
         .catch(err => console.error(err));
