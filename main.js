@@ -83,15 +83,27 @@ function initializeDropdowns() {
 }
 
 //inicializa o dashboard
-function initializeDashboard() {
+async function initializeDashboard() {
     
-    const $botaoCriarColuna = document.getElementById('coluna');
-    const $botaoCriarCard = document.getElementById('coluna');
+    const $botaoCriarColuna = document.getElementById('column');
+    const $botaoCriarCard = document.getElementById('card');
 
-    $botaoCriarColuna.addEventListener('click', () => {
-        let titulo = prompt("Digite o nome da coluna: ");
-        if (titulo) {
-            new Column().createColumn(titulo);
+    $botaoCriarColuna.addEventListener('click',async () => {
+        const $quadro = document.querySelector('.kanban');
+        let title = prompt("Digite o nome da coluna: ");
+        if (title) {
+            let column = {
+                id: null,
+                title: title,
+                creationDate: null,
+                modificationDate: null,
+                firstCard: null,
+                nextColumn: null
+            }
+            let coluna = new Column(column);
+            await coluna.saveColumn();
+            $quadro.innerHTML = '';
+            Column.carregarColunas();
         }
     });
 

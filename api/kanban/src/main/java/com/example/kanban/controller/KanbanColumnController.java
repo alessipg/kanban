@@ -24,6 +24,7 @@ public class KanbanColumnController {
     public List<KanbanColumnResponseDTO> getAll(){
         return kanbanColumnRepository.findAll().stream().map(KanbanColumnResponseDTO::new).toList();
     }
+
     @PostMapping
     public void SaveColumn(@RequestBody KanbanColumnRequestDTO data){
         KanbanColumn kanbanColumnData = new KanbanColumn(data);

@@ -36,8 +36,10 @@ export default class Column {
             </div>
             <div class="lista">
             </div>
+            <div class="addBtn"><button></button></div>
         </div>
         `;
+        
         $kanban.insertAdjacentHTML("beforeend", quadroHTML);
 
         // Adicionar event listeners de drag and drop à nova coluna
@@ -66,6 +68,7 @@ export default class Column {
                 
             });
         });
+        
     }
     // Busca todas as colunas da API
     static carregarColunas(){
@@ -80,6 +83,27 @@ export default class Column {
             });
         })
         .catch(err => console.error(err));
+    }
+    
+    async saveColumn(){
+        await fetch("http://localhost:8080/column",{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(this)
+        }).then(response => {
+            if (!response.ok) {
+              throw new Error('Erro na requisição');
+            }
+            return new Promise(response.json()); // Converte a resposta para JSON
+          })
+          .then(data => {
+            console.log('Sucesso:', data); // Processa a resposta
+          })
+          .catch(error => {
+            console.error('Erro:', error); // Trata erros
+          });
     }
 
 }
